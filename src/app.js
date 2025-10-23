@@ -15,4 +15,9 @@ app.use(express.static("public")) //this line means that any photo  in public fo
 app.use(cookieParser())
 
 
+import userRouter from './routes/user.routes.js'
+
+
+app.use("/api/v1/users",userRouter)  //best practice
+
 export default app;

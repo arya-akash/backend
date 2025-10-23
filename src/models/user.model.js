@@ -19,7 +19,7 @@ const userSchema = new Schema(
       lowecase: true,
       trim: true,
     },
-    fullname: {
+    fullName: {
       type: String,
       required: true,
       trim: true,
@@ -55,7 +55,7 @@ userSchema.pre("save",async function (next){
     if(!this.isModified("password"))return next();//this line check the password is modified or nod if modiified
     //then it going hash  other wise it not going to run next line
 
-    this.password=bcrypt.hash(this.password,10)
+    this.password= await bcrypt.hash(this.password,10)
     next()
 })
 

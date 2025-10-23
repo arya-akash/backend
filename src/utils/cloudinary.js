@@ -1,11 +1,11 @@
-import { v2 } from "cloudinary";
+import { v2 as cloudinary } from "cloudinary";
 import fs from "fs"
 
 
 cloudinary.config({ 
-  cloud_name: 'ddufg6q0l', 
-  api_key: '423211826786378', 
-  api_secret: 'D7Pg3HSzTgUnvZykockgZdV89Ps '
+  cloud_name: process.env.cloud_name1, 
+  api_key: process.env.api_key1, 
+  api_secret: process.env.api_secret1
 });
 
 const uploadCloudinary=async(localFilePath)=>{
@@ -20,5 +20,8 @@ const uploadCloudinary=async(localFilePath)=>{
         return response;
     }catch(error){
         fs.unlink(localFilePath)//localy remove the saved temproary file as the upload
+        return null;
     }
 }
+
+export default uploadCloudinary
